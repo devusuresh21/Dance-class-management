@@ -1,0 +1,4 @@
+<h2>Payment Details</h2>
+<p>Amount: {{ payment.amount }}</p>
+<p>Payment Date: {{ payment.payment_date }}</p>
+<a href="{% url 'payment_detail' user_id=payment.register_id %}">Payment</a>
