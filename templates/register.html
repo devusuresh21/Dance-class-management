@@ -1,0 +1,141 @@
+
+{% extends 'user_navbar.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+  label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  input[type="text"], select, input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #e10490;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+  }
+  
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #065115;
+  }
+
+  /* Background image */
+  body {
+    background-image: url('{% static "website/imgs/s.jpg" %}');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  /* Bootstrap grid */
+  .container {
+    margin-top: 50px;
+  }
+  
+  /* Resize age input field */
+  #Age {
+    width: calc(100% - 110px);
+    display: inline-block;
+  }
+  
+  select {
+    width: 100%;
+  }
+
+  /* Box for dance type and age */
+  .card {
+    background-color: rgba(93, 131, 235, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+</style>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        
+        <form method="post" action="">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-6">
+              <b>NAME:</b>
+            </div>
+            <div class="col-md-6" style="text-transform: capitalize">
+              {{ data.first_name }} {{ data.last_name }}
+            </div>
+          </div>
+          <hr>
+          <label for="dancetype">DANCE TYPE:</label>
+          <select name="dancetype" id="dancetype" required>
+            <option value="">Select Dance Type</option>
+            {% for i in dance %}
+              <option value="{{ i.id }}">{{ i.name }}</option>
+            {% endfor %}
+          </select>
+          
+          
+          <label for="Age">AGE:</label>
+          <input type="number" name="age" id="Age" title="Please enter only numbers" required>
+
+<input type="submit" onclick="showSuccessMessage()" value="Submit">
+
+
+        </form>
+      
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showSuccessMessage() {
+    // Get all the required input fields
+    const requiredFields = document.querySelectorAll('input[required]');
+
+    // Check if all required fields are filled
+    const isFilled = Array.from(requiredFields).every((field) => field.value.trim() !== '');
+
+    if (isFilled) {
+      if (confirm('Are you sure you want to register this dance form?')) {
+        // Proceed with registration
+        document.getElementById('registration-form').submit();
+      } else {
+        // Cancel registration
+        document.getElementById('registration-form').reset();
+      }
+    } else {
+      alert('Please fill in all required fields');
+    }
+  }
+</script>
+
+
+
+
+
+
+
+{% endblock %}
