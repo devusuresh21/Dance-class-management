@@ -1,0 +1,8 @@
+{% extends 'user_navbar.html' %}
+{% load static %}
+{% block content %}
+
+<h2>Payment Details</h2>
+<p>Amount: {{ payment.amount }}</p>
+<p>Payment Date: {{ payment.payment_date }}</p>
+{% endblock %}

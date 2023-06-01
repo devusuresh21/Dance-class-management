@@ -1,0 +1,162 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>RegistrationForm_v1 by Colorlib</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<!-- MATERIAL DESIGN ICONIC FONT -->
+		<link rel="stylesheet" href="{% static 'website/css1/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css' %}">
+
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="{% static 'website/css1/style.css' %}">
+		<style>
+			.wrapper {
+				background-image: url("https://www.example.com/website/imgs/d3.jpg");
+				background-size: cover;
+				background-position: center;
+			}
+		</style>
+	</head>
+	
+	<body class="section section1" style="background: url({% static 'website/imgs/bg.webp' %}) no-repeat top center;background-size: cover;">
+
+		<div class="wrapper" >
+			<div class="inner">
+				<div class="image-holder">
+					<img src="{% static 'website/imgs/s.jpg' %}" alt="">
+				</div>
+				<!-- sign_up.html -->
+
+				<form method="post" >
+                    {% csrf_token %}
+					
+					
+					
+					<label for="first_name">First name:</label>
+					<input type="text" id="first_name" name="first_name" required><br><br>
+					
+					<label for="last_name">Last name:</label>
+					<input type="text" id="last_name" name="last_name" required><br><br>
+					
+					<label for="gender">Gender:</label>
+					<select id="gender" name="gender">
+						<option value="male">Male</option>
+						<option value="female">Female</option>
+						<option value="other">Other</option>
+					</select><br><br>
+					
+					<label for="contact_no">Contact number:</label>
+					
+					<input type="text" id="contact_no" name="contact_no" maxlength="10" title="Please enter only numbers (0-9)" pattern="^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$" required><br><br>
+					
+
+
+					<label for="email">Email:</label>
+					<input type="email" id="email" name="email" required><br><br>
+					
+					<label for="password">Password:</label>
+					<input type="password" id="password" name="password" maxlength="10" title="At least 8 characters long" required><br><br>
+					<div class="button-container">
+					<button type="submit" onclick="showSuccessMessage()" value="Submit">
+						Sign up</button>
+					
+                    <button type="button" onclick="history.back()">Back</button>
+				</div>
+				</form>
+			</div>
+		</div>
+		
+
+		<!-- This templates was made by Colorlib (https://colorlib.com) -->
+		<style>
+			.button-container {
+	display: flex;
+	justify-content: space-between;
+}
+			button[type="submit"] {
+  margin-right: 20px;
+}
+	
+
+
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form select {
+  display: block;
+  width: 90%;
+  padding: 5px;
+  border: 1px solid #a62ede;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+
+form button[type="submit"] {
+  background-color: #a838d1;
+  color: rgb(247, 241, 246);
+  width: 50%;
+  padding: 5px;
+  border: 1px solid #a62ede;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+form button[type="submit"]:hover {
+  background-color: #bd53db;
+}
+
+form button[type="button"] {
+  background-color: #a838d1;
+  color: rgb(247, 241, 246);
+  width: 50%;
+  padding: 5px;
+  border: 1px solid #a62ede;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+form button[type="button"]:hover {
+  background-color: #bd53db;
+}
+
+
+
+		</style>
+<script>
+  function showSuccessMessage() {
+    // Get all the required input fields
+    const requiredFields = document.querySelectorAll('input[required]');
+  
+    // Check if all required fields are filled
+    const isFilled = Array.from(requiredFields).every((field) => field.value.trim() !== '');
+  
+    if (isFilled) {
+      if (confirm('Registered Successfully')) {
+        window.location.href = 'http://127.0.0.1:7070/' ;
+      }
+    } else {
+      alert('Please fill in all required fields');
+    }
+  }
+  </script>
+  
+
+  </script>
+
+  
+</body>
+</html>
+
+
+
+
+
